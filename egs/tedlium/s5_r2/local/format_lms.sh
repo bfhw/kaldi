@@ -9,7 +9,8 @@ if [ -f path.sh ]; then . ./path.sh; fi
 small_arpa_lm=data/local/local_lm/data/arpa/4gram_small.arpa.gz
 big_arpa_lm=data/local/local_lm/data/arpa/4gram_big.arpa.gz
 
-for f in $small_arpa_lm $big_arpa_lm data/lang_nosp/words.txt; do
+# for f in $small_arpa_lm $big_arpa_lm data/lang_nosp/words.txt; do
+for f in $small_arpa_lm data/lang_nosp/words.txt; do
   [ ! -f $f ] && echo "$0: expected file $f to exist" && exit 1
 done
 
@@ -29,11 +30,11 @@ fi
 
 
 
-if [ -f data/lang_nosp_rescore/G.carpa ] && [ data/lang_nosp_rescore/G.carpa -nt $big_arpa_lm ] && \
-    [ data/lang_nosp_rescore/G.carpa -nt data/lang_nosp/words.txt ]; then
-  echo "$0: not regenerating data/lang_nosp_rescore/ as it seems to already by up to date."
-else
-  utils/build_const_arpa_lm.sh $big_arpa_lm data/lang_nosp data/lang_nosp_rescore || exit 1;
-fi
+# if [ -f data/lang_nosp_rescore/G.carpa ] && [ data/lang_nosp_rescore/G.carpa -nt $big_arpa_lm ] && \
+#     [ data/lang_nosp_rescore/G.carpa -nt data/lang_nosp/words.txt ]; then
+#   echo "$0: not regenerating data/lang_nosp_rescore/ as it seems to already by up to date."
+# else
+#   utils/build_const_arpa_lm.sh $big_arpa_lm data/lang_nosp data/lang_nosp_rescore || exit 1;
+# fi
 
 exit 0;

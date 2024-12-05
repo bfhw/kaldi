@@ -11,8 +11,13 @@
 
 # JHU cluster (or most clusters using GridEngine, with a suitable
 # conf/queue.conf).
-export train_cmd="queue.pl"
-export decode_cmd="queue.pl --mem 4G"
+# export train_cmd="queue.pl"
+# export decode_cmd="queue.pl --mem 4G"
+
+export train_cmd="run.pl"
+export decode_cmd="run.pl"
+export mkgraph_cmd="run.pl"
+export cuda_cmd="run.pl --gpu 1"
 
 host=$(hostname -f)
 if [ ${host#*.} == "fit.vutbr.cz" ]; then
